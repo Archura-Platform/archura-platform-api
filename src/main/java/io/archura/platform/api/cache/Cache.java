@@ -1,31 +1,21 @@
 package io.archura.platform.api.cache;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public interface Cache {
 
-    Map<String, Object> get(String key);
+    boolean set(String key, String value);
 
-    List<Map<String, Object>> multiGet(Collection<String> keys);
+    String get(String key);
 
-    void put(String key, Map<String, Object> value);
+    long del(String... keys);
 
-    void putAll(Map<? extends String, ? extends Map<String, Object>> map);
+    boolean exists(String key);
 
-    Boolean putIfAbsent(String key, Map<String, Object> value);
+    List<String> keys();
 
-    Boolean hasKey(String key);
+    List<String> values();
 
-    Set<String> keys();
+    long length();
 
-    List<Map<String, Object>> values();
-
-    Map<String, Map<String, Object>> entries();
-
-    Long size();
-
-    void delete(String... hashKeys);
 }
