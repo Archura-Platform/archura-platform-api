@@ -3,6 +3,7 @@ package io.archura.platform.api.context;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.archura.platform.api.cache.Cache;
 import io.archura.platform.api.logger.Logger;
+import io.archura.platform.api.publish.Publisher;
 import io.archura.platform.api.stream.LightStream;
 
 import java.net.http.HttpClient;
@@ -13,6 +14,8 @@ public interface Context {
     Optional<Cache> getCache();
 
     Optional<LightStream> getLightStream();
+
+    Optional<Publisher> getPublisher();
 
     Logger getLogger();
 
