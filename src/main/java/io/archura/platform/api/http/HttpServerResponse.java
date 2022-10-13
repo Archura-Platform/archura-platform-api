@@ -17,7 +17,7 @@ import java.util.Map;
 public class HttpServerResponse {
     private byte[] bytes = new byte[]{};
     private int status = HttpStatusCode.HTTP_OK;
-    private Map<String, List<String>> headers;
+    private Map<String, List<String>> headers = new HashMap<>();
 
     public void setHeader(final String key, final String value) {
         final List<String> values = headers.getOrDefault(key, new ArrayList<>());
