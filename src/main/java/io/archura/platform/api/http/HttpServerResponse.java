@@ -27,6 +27,7 @@ public class HttpServerResponse {
 
     public static class HttpServerResponseBuilder {
         private Map<String, List<String>> headers = new HashMap<>();
+
         public HttpServerResponseBuilder header(final String key, final String value) {
             final List<String> values = headers.getOrDefault(key, new ArrayList<>());
             values.add(value);
