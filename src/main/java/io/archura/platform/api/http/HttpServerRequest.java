@@ -10,8 +10,7 @@ import java.net.InetSocketAddress;
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
-
-import static java.util.Objects.nonNull;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -27,10 +26,11 @@ public class HttpServerRequest {
     InetSocketAddress remoteAddress;
 
     public String getFirstHeader(String key) {
-        if (getRequestHeaders().containsKey(key)
-                && nonNull(getRequestHeaders().get(key))
-                && !getRequestHeaders().isEmpty()) {
-            return getRequestHeaders().get(key).get(0);
+        final Set<String> headerKeys = getRequestHeaders().keySet();
+        for (String headerKey : headerKeys) {
+            if (headerKey.equalsIgnoreCase(key)) {
+                return getRequestHeaders().get(headerKey).get(0);
+            }
         }
         return null;
     }
